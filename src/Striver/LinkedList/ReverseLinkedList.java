@@ -22,7 +22,7 @@ public class ReverseLinkedList {
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
 
-//        printing the list before reversing
+//        printing the list before reversings
             printList(head);
         System.out.println();
 
