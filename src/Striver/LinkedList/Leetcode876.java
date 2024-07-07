@@ -9,7 +9,11 @@ public class Leetcode876 {
         head.next.next.next = new LLNode(40);
         head.next.next.next.next = new LLNode(50);
 
-       head =  middleOfList(head);
+
+
+
+//       head =  middleOfList(head);
+        head = rabbitHaze(head);
        printLL(head);
 
     }
@@ -21,6 +25,30 @@ public class Leetcode876 {
             System.out.print(temp.data + " ");
             temp = temp.next;
         }
+    }
+
+    /**
+     * Optimal solution :- where we will be using the rabbit and the haze algorithm so that we can find the middle
+     * of the element in a single go
+     * every time rabbit moves two steps the haze will move only one step
+     * when the rabbit reaches the end of the list the haze will be at the middle of the list
+     */
+
+    static LLNode rabbitHaze(LLNode head){
+        LLNode fast = head; // fast pointer represents the rabbit
+        LLNode slow = head; // slow pointer represents the haze
+
+        int series = 1;
+
+//         until the fast reaches the end of the list traverse the whole list
+        while (fast!=null){
+            series++;
+            if (series % 2==1){
+                slow = slow.next;
+            }
+            fast = fast.next;
+        }
+        return slow.next;
     }
 
     /**
