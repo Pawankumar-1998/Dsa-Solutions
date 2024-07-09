@@ -1,4 +1,4 @@
-package Striver.LinkedList;
+package Striver.LinkedList.Brute;
 
 import java.util.Stack;
 

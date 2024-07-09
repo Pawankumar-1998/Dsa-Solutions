@@ -1,5 +1,8 @@
 package Striver.LinkedList.Average;
 
+/**
+    this is the basic structure of the node where the data is to be stored
+ */
 class ListNode {
     int val;
     ListNode next;
@@ -19,11 +22,9 @@ public class ReverseLinkedList {
         head.next.next = new ListNode(30);
         head.next.next.next = new ListNode(40);
 
-//        printing the list before the reversing the list
-//        printingLList(head);
-
-//        printing the list after the reversing the linked list
-        reverseTheList(head);
+        // calling Approach number 3
+        head = reverseListRecursive(head);
+        printingLList(head);
     }
 
 //    function for printing the linked list
@@ -35,7 +36,28 @@ public class ReverseLinkedList {
         }
     }
 
-//    function for reversing the linked list optimally by just changing the direction of the connection
+    /**
+     * Approach 3: in this approach we will be using recursion
+     */
+    static ListNode reverseListRecursive(ListNode head){
+//        base case : if the size of the list is null or contain only single element the simply return it
+        if(head == null || head.next == null){
+            return head;
+        }
+
+//        get the new head pointer from the below call
+        ListNode newHead = reverseListRecursive(head.next);
+        ListNode front = head.next;
+        front.next = head;
+        head.next = null;
+        return newHead;
+    }
+
+
+    /**
+     *Approach 2 : in this approach we just change the direction of the connection and point the head toward the last / tail
+     * node at the end
+     */
     static void reverseTheList(ListNode head){
         ListNode prev = null;
         ListNode temp = head;
