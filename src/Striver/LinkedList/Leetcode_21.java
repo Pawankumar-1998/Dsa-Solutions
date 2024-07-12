@@ -31,25 +31,39 @@ public class Leetcode_21 {
      * Solution number : 1
      */
 
-    static LLNode mergeList(LLNode head1 , LLNode head2){
+    static LLNode mergeList(LLNode head1 , LLNode head2) {
         LLNode temp1 = head1; // for pointing the first list
         LLNode temp2 = head2; // for pointing the second list
 
         LLNode newHead = new LLNode(-1);
         LLNode temp3 = newHead;
 
-        while (temp1!=null || temp2!=null){
+        while (temp1 != null && temp2 != null) {
 //            if the left list has the smaller value then place the value of the left list in the new array
-            if(temp1!=null && temp1.data <= temp2.data){
+            if (temp1.data <= temp2.data) {
                 temp3.next = new LLNode(temp1.data);
                 temp1 = temp1.next;
-            } else if (temp2!=null && temp2.data < temp1.data){
+            } else if (temp2.data < temp1.data) {
 //             if the right list has the smaller value place the right list value in the new array
                 temp3.next = new LLNode(temp2.data);
                 temp2 = temp2.next;
             }
             temp3 = temp3.next;
         }
-        return  newHead.next;
+//        check if the list one has any element if so send all the elements to the list
+        while (temp1 != null) {
+            temp3.next = new LLNode(temp1.data);
+            temp1 = temp1.next;
+            temp3 = temp3.next;
+        }
+
+//        check of the list two has any elements if so send all the elements to the list
+        while (temp2 != null) {
+            temp3.next = new LLNode(temp2.data);
+            temp2 = temp2.next;
+            temp3 = temp3.next;
+        }
+        return newHead.next;
+
     }
 }
