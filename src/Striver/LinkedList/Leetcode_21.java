@@ -39,7 +39,7 @@ public class Leetcode_21 {
         LLNode temp3 = newHead;
 
         while (temp1 != null && temp2 != null) {
-//            if the left list has the smaller value then place the value of the left list in new array
+//            if the left list has the smaller value then place the value of the left list in the new array
             if (temp1.data <= temp2.data) {
                 temp3.next = new LLNode(temp1.data);
                 temp1 = temp1.next;
